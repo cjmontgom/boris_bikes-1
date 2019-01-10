@@ -11,11 +11,13 @@ class DockingStation
 
   def release_bike
     fail "There are no bikes" if no_bikes?
+    fail "Bike is broken" if @docked_bikes.last.status != "working"
     @docked_bikes.pop
   end
 
-  def dock(bike)
+  def dock(bike, status = 'working')
     fail "Station is full" if full?
+    status == 'working' ? nil : bike.status = 'broken'
     @docked_bikes.push(bike)
   end
 

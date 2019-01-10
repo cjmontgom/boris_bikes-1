@@ -30,4 +30,11 @@ describe DockingStation do
     expect { occupied_dock.dock("21st Bike") }.to raise_error("Station is full")
   end
 
+  it "will raise error user tries to release a broken bike" do
+    broken_bike = Bike.new
+    subject.dock(broken_bike, "broken")
+    expect { subject.release_bike }.to raise_error "Bike is broken"
+  end
+
+
 end
