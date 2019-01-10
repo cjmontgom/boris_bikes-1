@@ -1,5 +1,4 @@
 require 'docking_station'
-#require 'bike'
 
 describe DockingStation do
 
@@ -32,7 +31,8 @@ describe DockingStation do
 
   it "will raise error user tries to release a broken bike" do
     broken_bike = Bike.new
-    subject.dock(broken_bike, "broken")
+    broken_bike.report_broken
+    subject.dock(broken_bike)
     expect { subject.release_bike }.to raise_error "Bike is broken"
   end
 

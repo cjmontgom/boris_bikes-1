@@ -1,15 +1,18 @@
 class Bike
-attr_accessor :status
 
   def initialize
-    @status = 'working'
+    @broken = false
+  end
+
+  def report_broken
+    @broken = true
+  end
+
+  def broken?
+    @broken
   end
 
   def working?
-    if bike.status == 'working'
-      true
-    elsif bike.status != 'working'
-      false
-    end
+    true
   end
 end
