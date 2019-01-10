@@ -12,7 +12,4 @@ class Bike
     @broken
   end
 
-  def working?
-    true
-  end
 end
