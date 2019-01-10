@@ -24,9 +24,10 @@ describe DockingStation do
     expect { DockingStation.new.release_bike }.to raise_error("There are no bikes")
   end
 
-  it 'will raise an error if attempting to dock a bike in a full station' do
+  it 'will raise an error if attempting to dock a bike in a full station and not raise error if docking fewer bikes' do
     occupied_dock = DockingStation.new()
-    20.times { occupied_dock.dock Bike.new }
+    expect { DockingStation::DEFAULT_CAPACITY.times { |i| occupied_dock.dock Bike.new } }.to_not raise_error
     expect { occupied_dock.dock("21st Bike") }.to raise_error("Station is full")
   end
+
 end
